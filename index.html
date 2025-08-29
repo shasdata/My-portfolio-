@@ -3,46 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sulaiman Hassan - Front-End Developer</title>
+    <title>ShasData - Front-End Developer</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #3498db;
-            --secondary-color: #2c3e50;
-            --accent-color: #e74c3c;
-            --light-bg: #f8f9fa;
-            --dark-text: #2c3e50;
-            --light-text: #ecf0f1;
+            --primary: #3498db;
+            --secondary: #2c3e50;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: var(--dark-text);
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
             line-height: 1.6;
+            background-color: #f9f9f9;
+            overflow-x: hidden;
         }
         
         .navbar {
-            background-color: var(--secondary-color);
+            background: var(--gradient);
             padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
-        .navbar-brand, .nav-link {
-            color: var(--light-text) !important;
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: white !important;
+        }
+        
+        .nav-link {
+            color: rgba(255,255,255,0.85) !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: white !important;
+            transform: translateY(-2px);
         }
         
         .hero {
-            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            background: var(--gradient);
             color: white;
-            padding: 5rem 0;
+            padding: 7rem 0 5rem;
             text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+        
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border: 5px solid rgba(255,255,255,0.2);
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn-primary {
+            background: var(--accent);
+            border: none;
+            padding: 0.8rem 2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
         .section-title {
             position: relative;
             padding-bottom: 15px;
-            margin-bottom: 30px;
+            margin-bottom: 3rem;
             text-align: center;
+            font-weight: 700;
         }
         
         .section-title::after {
@@ -52,57 +112,186 @@
             left: 50%;
             transform: translateX(-50%);
             width: 80px;
-            height: 3px;
-            background-color: var(--primary-color);
+            height: 4px;
+            background: var(--accent);
+        }
+        
+        .skills-section {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .skill-category {
+            margin-bottom: 3rem;
+        }
+        
+        .skill-category h3 {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            position: relative;
+            padding-left: 1rem;
+            border-left: 4px solid var(--primary);
         }
         
         .skill-item {
-            margin-bottom: 20px;
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            border-radius: 10px;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .skill-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .skill-item h4 {
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
         }
         
         .progress {
             height: 10px;
             border-radius: 5px;
+            background: #f1f1f1;
+            overflow: visible;
+        }
+        
+        .progress-bar {
+            border-radius: 5px;
+            position: relative;
+            background: var(--gradient);
+        }
+        
+        .progress-bar::after {
+            content: attr(data-progress);
+            position: absolute;
+            right: 0;
+            top: -25px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .experience-section {
+            padding: 5rem 0;
+            background: #f1f8ff;
+            clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
         }
         
         .experience-card {
-            border-left: 3px solid var(--primary-color);
-            padding-left: 20px;
-            margin-bottom: 30px;
-        }
-        
-        .contact-info {
-            background-color: var(--light-bg);
-            padding: 30px;
+            background: white;
+            padding: 2rem;
             border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s ease;
         }
         
-        .social-links a {
-            color: var(--secondary-color);
-            font-size: 1.5rem;
-            margin-right: 15px;
-            transition: color 0.3s;
+        .experience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
         
-        .social-links a:hover {
-            color: var(--primary-color);
+        .experience-card h3 {
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
         }
         
-        footer {
-            background-color: var(--secondary-color);
-            color: var(--light-text);
-            padding: 2rem 0;
-            text-align: center;
+        .experience-date {
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 1rem;
+            display: block;
         }
         
         .project-card {
-            transition: transform 0.3s;
-            margin-bottom: 20px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
             height: 100%;
         }
         
         .project-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .project-img {
+            height: 200px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        .contact-section {
+            padding: 5rem 0;
+            background: var(--gradient);
+            color: white;
+            clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+        }
+        
+        .contact-info {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            margin-bottom: 2rem;
+        }
+        
+        .contact-info i {
+            width: 30px;
+            color: var(--accent);
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            color: white;
+            margin-right: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        footer {
+            background: var(--secondary);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
         }
     </style>
 </head>
@@ -110,7 +299,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="#">Sulaiman Hassan</a>
+            <a class="navbar-brand" href="#">ShasData</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -139,84 +328,115 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container">
-            <h1 class="display-4 fw-bold">Sulaiman Hassan</h1>
-            <p class="lead">Front-End Developer passionate about building responsive and user-friendly web applications</p>
-            <a href="#contact" class="btn btn-light btn-lg mt-3">Get in Touch</a>
+            <div class="mb-4">
+                <i class="fas fa-user-circle fa-6x"></i>
+            </div>
+            <h1 class="display-4 fw-bold">ShasData</h1>
+            <p class="lead">Front-End Developer & Community Moderator passionate about building responsive web applications and engaging communities</p>
+            <a href="#contact" class="btn btn-primary btn-lg mt-3">Get in Touch</a>
         </div>
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="py-5">
+    <section id="skills" class="skills-section">
         <div class="container">
             <h2 class="section-title">Skills</h2>
+            
             <div class="row">
                 <div class="col-md-6">
-                    <div class="skill-item">
-                        <h5>HTML5</h5>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 95%"></div>
+                    <div class="skill-category">
+                        <h3>Technical Skills</h3>
+                        
+                        <div class="skill-item">
+                            <h4>HTML5</h4>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 95%" data-progress="95%"></div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="skill-item">
-                        <h5>CSS3</h5>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 90%"></div>
+                        
+                        <div class="skill-item">
+                            <h4>CSS3</h4>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 90%" data-progress="90%"></div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="skill-item">
-                        <h5>JavaScript (ES6+)</h5>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 85%"></div>
+                        
+                        <div class="skill-item">
+                            <h4>JavaScript (ES6+)</h4>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 85%" data-progress="85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <h4>React.js</h4>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 80%" data-progress="80%"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
+                
                 <div class="col-md-6">
-                    <div class="skill-item">
-                        <h5>React.js</h5>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 80%"></div>
+                    <div class="skill-category">
+                        <h3>Professional Skills</h3>
+                        
+                        <div class="skill-item">
+                            <h4>Customer Support</h4>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 90%" data-progress="90%"></div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="skill-item">
-                        <h5>Tailwind CSS</h5>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 85%"></div>
+                        
+                        <div class="skill-item">
+                            <h4>Community Moderation</h4>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 88%" data-progress="88%"></div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="skill-item">
-                        <h5>Bootstrap</h5>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 90%"></div>
+                        
+                        <div class="skill-item">
+                            <h4>Technical Communication</h4>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 85%" data-progress="85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <h4>Problem Solving</h4>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 92%" data-progress="92%"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             
             <div class="mt-5">
-                <h4 class="mb-4">Additional Skills & Tools</h4>
-                <div class="d-flex flex-wrap">
+                <h3 class="text-center mb-4">Tools & Technologies</h3>
+                <div class="d-flex flex-wrap justify-content-center">
+                    <span class="badge bg-primary me-2 mb-2 p-2">Tailwind CSS</span>
+                    <span class="badge bg-primary me-2 mb-2 p-2">Bootstrap</span>
                     <span class="badge bg-primary me-2 mb-2 p-2">Git & GitHub</span>
                     <span class="badge bg-primary me-2 mb-2 p-2">VS Code</span>
                     <span class="badge bg-primary me-2 mb-2 p-2">Figma</span>
                     <span class="badge bg-primary me-2 mb-2 p-2">Chrome DevTools</span>
-                    <span class="badge bg-primary me-2 mb-2 p-2">Responsive Design</span>
-                    <span class="badge bg-primary me-2 mb-2 p-2">Cross-Browser Compatibility</span>
-                    <span class="badge bg-primary me-2 mb-2 p-2">API Integration</span>
-                    <span class="badge bg-primary me-2 mb-2 p-2">UI/UX Fundamentals</span>
-                    <span class="badge bg-primary me-2 mb-2 p-2">Web3 & Blockchain</span>
+                    <span class="badge bg-primary me-2 mb-2 p-2">REST APIs</span>
+                    <span class="badge bg-primary me-2 mb-2 p-2">Web3</span>
+                    <span class="badge bg-primary me-2 mb-2 p-2">Blockchain</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="py-5 bg-light">
+    <section id="experience" class="experience-section">
         <div class="container">
             <h2 class="section-title">Experience</h2>
             
             <div class="experience-card">
-                <h4>Freelance Front-End Developer</h4>
-                <p class="text-muted">Remote | 2023 – Present</p>
+                <h3>Freelance Front-End Developer</h3>
+                <span class="experience-date">2023 – Present</span>
                 <ul>
                     <li>Designed and developed responsive websites for small businesses and startups</li>
                     <li>Built interactive landing pages with React.js and Tailwind CSS</li>
@@ -225,28 +445,48 @@
                 </ul>
             </div>
             
-            <h3 class="mt-5 mb-4">Web Projects (Personal & Collaborative)</h3>
+            <div class="experience-card">
+                <h3>Community Moderator</h3>
+                <span class="experience-date">2022 – Present</span>
+                <ul>
+                    <li>Managed and engaged community members across various platforms</li>
+                    <li>Facilitated discussions and resolved conflicts in online communities</li>
+                    <li>Developed community guidelines and moderation policies</li>
+                    <li>Organized community events and activities to increase engagement</li>
+                </ul>
+            </div>
+            
+            <h3 class="mt-5 mb-4 text-center">Web Projects (Personal & Collaborative)</h3>
             
             <div class="row">
                 <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body">
+                    <div class="project-card">
+                        <div class="project-img">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="project-content">
                             <h5 class="card-title">Crypto Dashboard</h5>
                             <p class="card-text">Live cryptocurrency data display using APIs with real-time updates and interactive charts.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body">
+                    <div class="project-card">
+                        <div class="project-img">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div class="project-content">
                             <h5 class="card-title">Portfolio Website</h5>
                             <p class="card-text">Personal site showcasing projects and skills with modern design and smooth animations.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body">
+                    <div class="project-card">
+                        <div class="project-img">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="project-content">
                             <h5 class="card-title">E-commerce Front-End</h5>
                             <p class="card-text">Product catalog and cart functionality with React, featuring responsive design and intuitive UI.</p>
                         </div>
@@ -256,66 +496,46 @@
         </div>
     </section>
 
-    <!-- Additional Information -->
-    <section id="additional" class="py-5">
-        <div class="container">
-            <h2 class="section-title">Community Involvement</h2>
-            <div class="row">
-                <div class="col-md-8 mx-auto">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <p class="card-text">
-                                Active in blockchain & Web3 communities (KulaDAO, AnyAlt, Earnscape, etc.)<br>
-                                Contributor in online tech spaces<br>
-                                Open to collaborations and remote opportunities
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Contact Section -->
-    <section id="contact" class="py-5 bg-light">
+    <section id="contact" class="contact-section">
         <div class="container">
-            <h2 class="section-title">Contact Me</h2>
+            <h2 class="section-title text-white">Contact Me</h2>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <div class="contact-info">
                         <h4>Get in Touch</h4>
                         <p>I'm available for freelance work and remote opportunities. Feel free to reach out!</p>
                         
                         <div class="mt-4">
-                            <p><i class="bi bi-geo-alt-fill"></i> <strong>Address:</strong> Kano, Nigeria</p>
-                            <p><i class="bi bi-telephone-fill"></i> <strong>Phone:</strong> 08037677464</p>
-                            <p><i class="bi bi-envelope-fill"></i> <strong>Email:</strong> shassulaiman98@gmail.com</p>
+                            <p><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> Kano, Nigeria</p>
+                            <p><i class="fas fa-phone"></i> <strong>Phone:</strong> 08037677464</p>
+                            <p><i class="fas fa-envelope"></i> <strong>Email:</strong> shassulaiman98@gmail.com</p>
                         </div>
                         
                         <div class="social-links mt-4">
-                            <a href="#"><i class="bi bi-github"></i></a>
-                            <a href="#"><i class="bi bi-linkedin"></i></a>
-                            <a href="#"><i class="bi bi-twitter"></i></a>
-                            <a href="#"><i class="bi bi-discord"></i></a>
+                            <a href="https://x.com/Sulemanhsulema2" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.linkedin.com/in/sulaiman-shas-3aa227256" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://t.me/Sulemanshas" target="_blank"><i class="fab fa-telegram"></i></a>
+                            <a href="#"><i class="fab fa-discord"></i></a>
                         </div>
                     </div>
                 </div>
                 
-                <div class="col-md-6">
-                    <form>
+                <div class="col-md-7">
+                    <form action="https://formspree.io/f/xqadeozy" method="POST">
                         <div class="mb-3">
                             <label for="name" class="form-label">Your Name</label>
-                            <input type="text" class="form-control" id="name" required>
+                            <input type="text" class="form-control" id="name" name="name" required>
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email Address</label>
-                            <input type="email" class="form-control" id="email" required>
+                            <input type="email" class="form-control" id="email" name="_replyto" required>
                         </div>
                         <div class="mb-3">
                             <label for="message" class="form-label">Message</label>
-                            <textarea class="form-control" id="message" rows="5" required></textarea>
+                            <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
+                        <button type="submit" class="btn btn-light">Send Message</button>
                     </form>
                 </div>
             </div>
@@ -325,8 +545,8 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2023 Sulaiman Hassan. All Rights Reserved.</p>
-            <p>Front-End Developer specializing in responsive web applications</p>
+            <p>&copy; 2023 ShasData (Sulaiman Hassan). All Rights Reserved.</p>
+            <p>Front-End Developer & Community Moderator</p>
         </div>
     </footer>
 
